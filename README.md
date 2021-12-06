@@ -19,3 +19,8 @@ Heroku
 Postgresql
 
 # Dependencies
+ bootstrap3 
+ django3.2.8 
+ postgres db 
+ python-decouple
+ django-heroku
