@@ -18,4 +18,4 @@ Bootstrap 3
 Heroku
 Postgresql
 
-
+# Dependencies
