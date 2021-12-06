@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<style>
+    #background{
+        background: linear-gradient(45deg, #eb0a0a 0%, #fdfbfd 25%, #2751dc 50%, #281dce 75%, #bc1888 100%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
+<h1 style="text-align:center; font-size:40px; font-family: 'Satisfy', cursive;">Instagram posts</h1>
+
+{% for post in posts%}
+<div class="container" id="background">
+    <div class="col-md-6" style="border-radius:1%;">
+        <div class="card m-3" style="padding-left: 50px;">
+            <img style="width: 100%; height:100%" src="{{post.image.url}}" class="img-thumbnail">
+
+            <a href="/">
+                
+                <p>{{post.comments.Count}}</p>
+      <p style="font-style: oblique;">{{photo.photo_caption}}</p>
+      <p>Likes: <strong>{{photo.saved_likes}} </strong>
+      </p>
+            <img src="https://img.icons8.com/material-outlined/24/000000/filled-like.png"/>
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-sent.png"/>
+            <img src="https://img.icons8.com/material-outlined/24/000000/speech-bubble--v2.png"/>
+        </a>
+
+            <p style="font-size: 25px; color: rgb(8, 8, 8); font-family: 'Satisfy', cursive;"><strong class="text-secondary pl-3" >{{post.profile}} <br></strong> {{post.image_caption}}.</p>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

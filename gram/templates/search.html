@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+<style>
+    #background1{
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
+
+<div class="container" style="font-family: 'Satisfy', cursive;" id="background1">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            {% if results %}
+            <h5 class="text-center" style="font-size: 25px; color: white;">Found {{ results|length }} user{{ results|pluralize }}</h5>
+            {% else %}
+            <h5 class="text-center" style="font-size: 40px; color: white;"> Found 0 user with username <strong>{{message}}</strong></h5>
+
+            <a class="d-block mx-auto btn btn-md btn-success d-block mx-auto" href="/">
+                Back Home
+            </a>
+            {% endif %}
+            <hr>
+            {% if results %}
+            {% for res in results %}
+            <div class="container">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{res.user.profile.picture.url}}" alt="oops cant display"
+                                class="rounded-circle border ml-3 mt-2  mr-3" width="350px" height="300px">
+                        </div>
+                        <div class="col-md-3">
+                            <span style="font-size: 40px;"><strong><a href="">{{res.user.username}}</a></strong></span>
+                            <div class="row">
+                                <div class="col-md-4" style="font-size: 25px; color: white;">Followers</div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="col-md-4" style="font-size: 25px; color: white;">Following</div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-md-3 mt-3">
+                                {% csrf_token %}
+                                <form method="POST" action="follow/{{res.user.id}}">
+                                    <button class="btn btn-md btn-primary" name="follow">UNFOLLOW</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <a class="d-block mx-auto btn btn-md btn-success d-block mx-auto" href="/">
+                        BACK HOME
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
