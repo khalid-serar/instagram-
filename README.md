@@ -25,4 +25,6 @@ Postgresql
  python-decouple
  django-heroku
 
-# Support and contact details In case of any issues,and questions, contact me through;my email:khalidaserar@gmail.com
+# Support and contact details In case of any issues,and questions, contact me through;
+my email:khalidaserar@gmail.com
+
